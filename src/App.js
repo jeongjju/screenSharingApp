@@ -202,7 +202,7 @@ class Url extends Component {
           <FormControl
             type="text"
             value={this.props.url}
-            placeholder="e.g. ws://192.168.1.2:8090/stream/webrtc"
+            placeholder="e.g. ws://192.168.137.28:8080/stream"
             onChange={this.handleChange}
             bsSize={this.props.size ? this.props.size : "small"}
           />
@@ -390,7 +390,8 @@ class ScreenSharing extends Component {
     this.videoRef = React.createRef();
     this.sessionRef = React.createRef();
     this.state = {
-      url: this.getDefaultUrl(), // e.g. "ws://192.168.1.10:9080/stream/webrtc",
+      // url: this.getDefaultUrl(), // e.g. "ws://192.168.1.10:9080/stream/webrtc",
+      url:"ws://192.168.137.28:8080/stream/webrtc",
       options: {
         useH264: true,
         resolution: "35",
@@ -456,7 +457,7 @@ class ScreenSharing extends Component {
     return (
       <div>
         <Url
-          title="URL of the Web Service to call"
+          // title="URL of the Web Service to call"
           url={this.state.url}
           onUrlChange={this.handleUrlChange}
         />
@@ -465,7 +466,7 @@ class ScreenSharing extends Component {
             Your browser does not support the video tag.
           </video>
         </div>
-        <div>
+        <div style={{display:'none'}}>
           <Options
             options={this.state.options}
             onOptionsChange={this.handleOptionsChange}
@@ -519,6 +520,7 @@ class App extends Component {
             </Label>
           </OverlayTrigger>
         </PageHeader>
+        <ScreenSharing />
         <ScreenSharing />
       </div>
     );
